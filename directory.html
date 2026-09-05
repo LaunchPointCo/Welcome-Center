@@ -22,12 +22,10 @@
   <!-- Top Glass Header -->
   <header class="site-header">
     <div class="header-container">
-      <div class="header-left-nav">
-        <a href="index.html" class="header-back-link" title="Return to Operating Hours Dashboard" aria-label="Back to Operating Hours">
-          <i class="fas fa-arrow-left"></i>
-          <span>Operating Hours</span>
-        </a>
-        <div class="brand-divider"></div>
+      <a href="index.html" class="brand-group" aria-label="Gavilan College Student Services Home">
+        <div class="brand-logo-badge">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
         <div class="brand-text">
           <div class="brand-title-row">
             <span class="brand-college">Gavilan College</span>
@@ -35,15 +33,21 @@
           </div>
           <span class="page-title">Campus Phone &amp; Extension Database</span>
         </div>
-      </div>
+      </a>
 
-      <!-- Live Pacific Clock & Theme Toggle -->
+      <!-- Live Pacific Clock, Back to Hours Link & Theme Toggle -->
       <div class="header-actions">
         <div class="status-indicator">
           <span class="pulse-dot"></span>
           <span class="status-label">Gilroy Campus:</span>
           <strong id="live-pacific-clock" class="live-clock">--:-- -- PT</strong>
         </div>
+        <!-- Return to Operating Hours Button -->
+        <a href="index.html" class="header-link-btn" title="Return to Operating Hours Dashboard" aria-label="Back to Operating Hours">
+          <i class="fas fa-clock"></i>
+          <span>Hours</span>
+        </a>
+        <!-- Light / Dark Mode Switcher -->
         <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light / Dark Mode" aria-label="Toggle Color Theme">
           <i class="fas fa-sun" id="theme-icon"></i>
         </button>
