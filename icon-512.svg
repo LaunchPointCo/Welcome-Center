@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1931"/>
+      <stop offset="50%" stop-color="#0f2952"/>
+      <stop offset="100%" stop-color="#061020"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd56b"/>
+      <stop offset="50%" stop-color="#e5a823"/>
+      <stop offset="100%" stop-color="#b87b0a"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle inner border & glow -->
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-opacity="0.35"/>
+  <rect width="512" height="260" rx="112" fill="url(#glowGrad)"/>
+
+  <!-- Centered Gavilan "G" Monogram + Clock Motif -->
+  <g filter="url(#dropShadow)">
+    <!-- Stylized G Shield -->
+    <path d="M 256 100 C 335 100 395 155 395 235 L 395 260 C 395 272 385 282 373 282 L 275 282 C 263 282 253 272 253 260 L 253 250 C 253 238 263 228 275 228 L 328 228 C 324 186 295 160 256 160 C 205 160 168 202 168 256 C 168 310 205 352 256 352 C 288 352 315 334 326 305 C 330 294 343 288 354 292 C 365 296 371 309 367 320 C 348 365 306 398 256 398 C 172 398 112 334 112 256 C 112 178 172 100 256 100 Z" fill="url(#goldGrad)"/>
+    
+    <!-- Real-Time Badge Ring (Clock) at Bottom-Right -->
+    <circle cx="366" cy="366" r="66" fill="#0c1d3b" stroke="url(#goldGrad)" stroke-width="8"/>
+    <!-- Clock Hands at 9:00 / Open -->
+    <circle cx="366" cy="366" r="6" fill="#ffffff"/>
+    <line x1="366" y1="366" x2="366" y2="330" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+    <line x1="366" y1="366" x2="395" y2="366" stroke="#ffd56b" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sparkle Accent -->
+  <path d="M 170 140 L 176 156 L 192 162 L 176 168 L 170 184 L 164 168 L 148 162 L 164 156 Z" fill="#ffffff" opacity="0.85"/>
+</svg>

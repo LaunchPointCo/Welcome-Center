@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gavilan College Student Services & Operating Hours Directory. Modern Fall 2026 hours for Welcome Center, Admissions & Records, Financial Aid, and Counseling.">
+  <title>Gavilan College | Student Services Hours</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans for high-end modern tech/app aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Ultra-Modern Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation / Minimalist Glass Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="brand-group" aria-label="Gavilan College Student Services Home">
+        <div class="brand-logo-badge">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <span class="brand-college">Gavilan College</span>
+            <span class="term-badge">Fall 2026</span>
+          </div>
+          <span class="page-title">Student Services Operating Hours</span>
+        </div>
+      </a>
+
+      <!-- Live Pacific Time & Theme Toggle -->
+      <div class="header-actions">
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span class="status-label">Gilroy Campus:</span>
+          <strong id="live-pacific-clock" class="live-clock">--:-- -- PT</strong>
+        </div>
+        <!-- Subtle Staff Directory Link Button -->
+        <a href="directory.html" class="header-link-btn" title="View Staff Phone & Extension Directory" aria-label="Staff Phone Directory">
+          <i class="fas fa-address-book"></i>
+          <span>Staff Directory</span>
+        </a>
+        <!-- Light / Dark Mode Switcher (Defaults to Dark Mode) -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light / Dark Mode" aria-label="Toggle Color Theme">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-wrapper">
+    
+    <!-- Day Filter & Controls Section -->
+    <section class="controls-section" aria-label="Day Filter Controls">
+      <div class="controls-container">
+        
+        <!-- Filter Row: Day Selection Pills -->
+        <div class="filter-row">
+          <div class="filter-group">
+            <span class="filter-title"><i class="far fa-calendar-alt"></i> Highlight Day:</span>
+            <div class="day-tabs-group" id="day-tabs" role="tablist">
+              <button class="day-tab-btn active" data-day="all" role="tab">All Days</button>
+              <button class="day-tab-btn" data-day="1" role="tab">Monday</button>
+              <button class="day-tab-btn" data-day="2" role="tab">Tuesday</button>
+              <button class="day-tab-btn" data-day="3" role="tab">Wednesday</button>
+              <button class="day-tab-btn" data-day="4" role="tab">Thursday</button>
+              <button class="day-tab-btn" data-day="5" role="tab">Friday</button>
+            </div>
+          </div>
+
+          <div class="quick-stats" id="results-count">
+            Showing <strong>4</strong> Core Departments
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Services Cards Grid Section -->
+    <section class="directory-section">
+      <div class="directory-container">
+
+        <div class="services-grid" id="services-grid">
+
+          <!-- ========================================================
+               1. WELCOME CENTER CARD
+               ======================================================== -->
+          <article class="service-card" id="card-welcome-center" data-keywords="welcome center info orientation front desk campus tour student id help directions navigation">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="dept-icon-box icon-blue">
+                  <i class="fas fa-door-open"></i>
+                </div>
+                <div>
+                  <div class="dept-meta">
+                    <span class="badge-core">Core Department</span>
+                    <span class="dept-location"><i class="fas fa-location-dot"></i> Student Center SC 100</span>
+                  </div>
+                  <h2 class="dept-name">Welcome Center</h2>
+                </div>
+              </div>
+              <div class="live-status-pill status-calc" data-dept="welcome-center">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking hours...</span>
+              </div>
+            </div>
+
+            <p class="dept-desc">
+              Your starting point on campus for student directions, Student ID cards, general onboarding, and enrollment navigation.
+            </p>
+
+            <!-- Delivery Mode Selector (Campus Desk vs Virtual Zoom) -->
+            <div class="mode-tabs" role="tablist">
+              <button class="mode-btn active" data-target="welcome-inperson" role="tab" aria-selected="true">
+                <i class="fas fa-building-columns"></i> On-Campus Desk
+              </button>
+              <button class="mode-btn" data-target="welcome-zoom" role="tab" aria-selected="false">
+                <i class="fas fa-video"></i> Virtual Zoom Desk
+              </button>
+            </div>
+
+            <!-- In-Person Hours List -->
+            <div class="schedule-panel active" id="welcome-inperson">
+              <div class="schedule-list-wrap">
+                <div class="schedule-row day-row" data-day="1">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Mon</span>
+                    <span class="day-full-name">Monday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 6:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="2">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Tue</span>
+                    <span class="day-full-name">Tuesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 6:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="3">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Wed</span>
+                    <span class="day-full-name">Wednesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="4">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Thu</span>
+                    <span class="day-full-name">Thursday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="5">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Fri</span>
+                    <span class="day-full-name">Friday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 2:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="6">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Weekend</span>
+                    <span class="day-full-name text-muted">Saturday &amp; Sunday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot text-muted">Closed</span>
+                    <span class="badge-tag tag-closed">Closed</span>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-note">
+                <i class="fas fa-info-circle"></i>
+                <span>Walk-ins welcome during open hours at Gilroy Campus SC 100.</span>
+              </div>
+            </div>
+
+            <!-- Zoom Hours List -->
+            <div class="schedule-panel" id="welcome-zoom" style="display: none;">
+              <div class="schedule-list-wrap">
+                <div class="schedule-row day-row" data-day="1">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Mon</span>
+                    <span class="day-full-name">Monday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 6:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="2">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Tue</span>
+                    <span class="day-full-name">Tuesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 6:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="3">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Wed</span>
+                    <span class="day-full-name">Wednesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="4">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Thu</span>
+                    <span class="day-full-name">Thursday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="5">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Fri</span>
+                    <span class="day-full-name">Friday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:00 AM – 2:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="6">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Weekend</span>
+                    <span class="day-full-name text-muted">Saturday &amp; Sunday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot text-muted">Closed</span>
+                    <span class="badge-tag tag-closed">Closed</span>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-note">
+                <i class="fas fa-video"></i>
+                <span>Virtual Zoom lobby mirrors standard Welcome Center desk hours.</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button class="btn-copy-hours" data-card="card-welcome-center">
+                <i class="far fa-copy"></i> Copy Hours
+              </button>
+            </div>
+          </article>
+
+
+          <!-- ========================================================
+               2. ADMISSIONS AND RECORDS CARD
+               ======================================================== -->
+          <article class="service-card" id="card-admissions-records" data-keywords="admissions records a&r transcripts registration enroll classes graduation residency petition">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="dept-icon-box icon-gold">
+                  <i class="fas fa-id-card-clip"></i>
+                </div>
+                <div>
+                  <div class="dept-meta">
+                    <span class="badge-core">Core Department</span>
+                    <span class="dept-location"><i class="fas fa-location-dot"></i> Student Center SC 106</span>
+                  </div>
+                  <h2 class="dept-name">Admissions &amp; Records</h2>
+                </div>
+              </div>
+              <div class="live-status-pill status-calc" data-dept="admissions-records">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking hours...</span>
+              </div>
+            </div>
+
+            <p class="dept-desc">
+              Enrollment verification, transcript requests, graduation evaluations, residency changes, and course registration.
+            </p>
+
+            <!-- Delivery Mode Selector -->
+            <div class="mode-tabs" role="tablist">
+              <button class="mode-btn active" data-target="ar-inperson" role="tab" aria-selected="true">
+                <i class="fas fa-building-columns"></i> On-Campus Counter
+              </button>
+              <button class="mode-btn" data-target="ar-zoom" role="tab" aria-selected="false">
+                <i class="fas fa-video"></i> Virtual Zoom Counter
+              </button>
+            </div>
+
+            <!-- In-Person Hours List -->
+            <div class="schedule-panel active" id="ar-inperson">
+              <div class="schedule-list-wrap">
+                <div class="schedule-row day-row" data-day="1">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Mon</span>
+                    <span class="day-full-name">Monday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 6:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="2">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Tue</span>
+                    <span class="day-full-name">Tuesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 6:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="3">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Wed</span>
+                    <span class="day-full-name">Wednesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="4">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Thu</span>
+                    <span class="day-full-name">Thursday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="5">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Fri</span>
+                    <span class="day-full-name">Friday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 2:00 PM</span>
+                    <span class="badge-tag tag-open">Open</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="6">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Weekend</span>
+                    <span class="day-full-name text-muted">Saturday &amp; Sunday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot text-muted">Closed</span>
+                    <span class="badge-tag tag-closed">Closed</span>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-note">
+                <i class="fas fa-info-circle"></i>
+                <span>In-person counter services available in Student Center SC 106.</span>
+              </div>
+            </div>
+
+            <!-- Zoom Hours List -->
+            <div class="schedule-panel" id="ar-zoom" style="display: none;">
+              <div class="schedule-list-wrap">
+                <div class="schedule-row day-row" data-day="1">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Mon</span>
+                    <span class="day-full-name">Monday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">10:00 AM – 3:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="2">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Tue</span>
+                    <span class="day-full-name">Tuesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">10:00 AM – 3:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="3">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Wed</span>
+                    <span class="day-full-name">Wednesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">10:00 AM – 3:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="4">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Thu</span>
+                    <span class="day-full-name">Thursday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">10:00 AM – 3:00 PM</span>
+                    <span class="badge-tag tag-zoom">Zoom Desk</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="5">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Fri</span>
+                    <span class="day-full-name text-muted">Friday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot text-muted">Not Available</span>
+                    <span class="badge-tag tag-closed">Unavailable</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="6">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Weekend</span>
+                    <span class="day-full-name text-muted">Saturday &amp; Sunday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot text-muted">Closed</span>
+                    <span class="badge-tag tag-closed">Closed</span>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-note alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>Friday Notice:</strong> Zoom counter is Not Available on Fridays. Please visit the in-person counter (8:30 AM – 2:00 PM).</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button class="btn-copy-hours" data-card="card-admissions-records">
+                <i class="far fa-copy"></i> Copy Hours
+              </button>
+            </div>
+          </article>
+
+
+          <!-- ========================================================
+               3. FINANCIAL AID CARD
+               ======================================================== -->
+          <article class="service-card" id="card-financial-aid" data-keywords="financial aid fafsa dream act grants scholarships loans promise grant fee waiver tuition money">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="dept-icon-box icon-emerald">
+                  <i class="fas fa-hand-holding-dollar"></i>
+                </div>
+                <div>
+                  <div class="dept-meta">
+                    <span class="badge-core">Core Department</span>
+                    <span class="dept-location"><i class="fas fa-location-dot"></i> Student Center SC 110</span>
+                  </div>
+                  <h2 class="dept-name">Financial Aid</h2>
+                </div>
+              </div>
+              <div class="live-status-pill status-calc" data-dept="financial-aid">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking hours...</span>
+              </div>
+            </div>
+
+            <p class="dept-desc">
+              Assistance with FAFSA, CADAA (CA Dream Act), California College Promise Grant (CCPG fee waiver), scholarships, and student loans.
+            </p>
+
+            <div class="schedule-panel active">
+              <div class="schedule-list-wrap">
+                <div class="schedule-row day-row" data-day="1">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Mon</span>
+                    <span class="day-full-name">Monday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 5:30 PM</span>
+                    <span class="badge-tag tag-open">Walk-in</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="2">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Tue</span>
+                    <span class="day-full-name">Tuesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 5:30 PM</span>
+                    <span class="badge-tag tag-open">Walk-in</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="3">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Wed</span>
+                    <span class="day-full-name">Wednesday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-open">Walk-in</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="4">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Thu</span>
+                    <span class="day-full-name">Thursday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot">8:30 AM – 5:00 PM</span>
+                    <span class="badge-tag tag-open">Walk-in</span>
+                  </div>
+                </div>
+                <div class="schedule-row day-row friday-split-row" data-day="5">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Fri</span>
+                    <span class="day-full-name">Friday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <div class="split-times-col">
+                      <div class="split-slot-row">
+                        <span class="time-slot">8:30 AM – 12:00 PM</span>
+                        <span class="badge-tag tag-open">Drop-in</span>
+                      </div>
+                      <div class="split-slot-row">
+                        <span class="time-slot sub-time">12:00 PM – 2:00 PM</span>
+                        <span class="badge-tag tag-split">Appt Only</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="schedule-row day-row" data-day="6">
+                  <div class="schedule-row-left">
+                    <span class="day-badge">Weekend</span>
+                    <span class="day-full-name text-muted">Saturday &amp; Sunday</span>
+                  </div>
+                  <div class="schedule-row-right">
+                    <span class="time-slot text-muted">Closed</span>
+                    <span class="badge-tag tag-closed">Closed</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Friday Specific Callout -->
+              <div class="schedule-note alert-special">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <strong>Friday Schedule Breakdown:</strong> Drop-in services run 8:30 AM – 12:00 PM. Afternoon support between 12:00 PM and 2:00 PM is strictly <em>by appointment only</em>.
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button class="btn-copy-hours" data-card="card-financial-aid">
+                <i class="far fa-copy"></i> Copy Hours
+              </button>
+            </div>
+          </article>
+
+
+          <!-- ========================================================
+               4. COUNSELING CARD
+               ======================================================== -->
+          <article class="service-card card-tba" id="card-counseling" data-keywords="counseling academic advising ed plan educational plan transfer career graduation counselor appointment">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="dept-icon-box icon-purple">
+                  <i class="fas fa-user-graduate"></i>
+                </div>
+                <div>
+                  <div class="dept-meta">
+                    <span class="badge-core">Core Department</span>
+                    <span class="dept-location"><i class="fas fa-location-dot"></i> Student Center, Gilroy Campus</span>
+                  </div>
+                  <h2 class="dept-name">Counseling</h2>
+                </div>
+              </div>
+              <div class="live-status-pill status-tba">
+                <span class="status-dot"></span>
+                <span>Hours TBA / Finalizing</span>
+              </div>
+            </div>
+
+            <p class="dept-desc">
+              Comprehensive educational planning (Ed Plans), transfer advising to UC/CSU, degree graduation checks, and career counseling.
+            </p>
+
+            <!-- Under Construction Notice Box -->
+            <div class="tba-banner-box">
+              <div class="tba-icon-large">
+                <i class="fas fa-person-digging"></i>
+              </div>
+              <div class="tba-content">
+                <h3 class="tba-title">Hours Under Construction / TBA</h3>
+                <p class="tba-desc">
+                  The official Fall 2026 counseling appointment and drop-in schedule is currently being finalized.
+                </p>
+                <div class="tba-action-box">
+                  <span>Need immediate advising support or enrollment triage?</span>
+                  <a href="#card-welcome-center" class="btn-tba-referral" id="counseling-referral-btn">
+                    <i class="fas fa-comments"></i> Inquire via Welcome Center
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span class="tba-footer-note"><i class="fas fa-info-circle"></i> Check back soon for finalized Fall 2026 advising hours.</span>
+            </div>
+          </article>
+
+        </div><!-- /services-grid -->
+
+        <!-- No Results Fallback -->
+        <div class="no-results-state" id="no-results" style="display: none;">
+          <i class="fas fa-search"></i>
+          <h3>No matching services found</h3>
+          <p>Try searching for Welcome Center, Admissions, Financial Aid, or Counseling.</p>
+          <button class="btn-reset-search" id="btn-reset-search">View All Departments</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Mobile Quick Jump Dock (Sticky on mobile for instant 1-thumb teleportation) -->
+  <nav class="mobile-quick-dock" id="mobile-quick-dock" aria-label="Mobile Quick Teleport Navigation">
+    <div class="mobile-dock-inner">
+      <button class="dock-btn" data-target="card-welcome-center" title="Jump to Welcome Center" aria-label="Jump to Welcome Center">
+        <div class="dock-icon-wrap icon-blue">
+          <i class="fas fa-door-open"></i>
+        </div>
+        <span class="dock-label">Welcome</span>
+      </button>
+      <button class="dock-btn" data-target="card-admissions-records" title="Jump to Admissions & Records" aria-label="Jump to Admissions & Records">
+        <div class="dock-icon-wrap icon-gold">
+          <i class="fas fa-id-card-clip"></i>
+        </div>
+        <span class="dock-label">Admissions</span>
+      </button>
+      <button class="dock-btn" data-target="card-financial-aid" title="Jump to Financial Aid" aria-label="Jump to Financial Aid">
+        <div class="dock-icon-wrap icon-emerald">
+          <i class="fas fa-hand-holding-dollar"></i>
+        </div>
+        <span class="dock-label">Fin Aid</span>
+      </button>
+      <button class="dock-btn" data-target="card-counseling" title="Jump to Counseling" aria-label="Jump to Counseling">
+        <div class="dock-icon-wrap icon-purple">
+          <i class="fas fa-user-graduate"></i>
+        </div>
+        <span class="dock-label">Counseling</span>
+      </button>
+      <button class="dock-btn dock-top-btn" id="dock-btn-top" title="Back to Top" aria-label="Back to top">
+        <div class="dock-icon-wrap icon-gray">
+          <i class="fas fa-arrow-up"></i>
+        </div>
+        <span class="dock-label">Top</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Clean Minimalist Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <strong>Gavilan College Student Services Directory</strong>
+        <span>Gilroy Campus: 5055 Santa Teresa Blvd, Gilroy, CA 95020</span>
+        <div class="footer-nav-links">
+          <span class="footer-sub-link active"><i class="fas fa-clock"></i> Operating Hours Directory</span>
+          <span class="footer-dot">•</span>
+          <a href="directory.html" class="footer-sub-link"><i class="fas fa-address-book"></i> Staff Phone Directory</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <span>Hours effective as of <strong>September 1, 2026 (Fall 2026)</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Popup -->
+  <div class="toast-popup" id="toast-popup" role="status" aria-live="polite">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-text">Hours copied to clipboard!</span>
+  </div>
+
+  <!-- Vanilla JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

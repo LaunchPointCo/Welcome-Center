@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gavilan College Staff & Department Phone Directory. Quick lookup for phone extensions, front desk lines, campus security, and staff contacts.">
+  <title>Staff Phone Directory | Gavilan College</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Glass Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-left-nav">
+        <a href="index.html" class="header-back-link" title="Return to Operating Hours Dashboard" aria-label="Back to Operating Hours">
+          <i class="fas fa-arrow-left"></i>
+          <span>Operating Hours</span>
+        </a>
+        <div class="brand-divider"></div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <span class="brand-college">Gavilan College</span>
+            <span class="term-badge">Staff Directory</span>
+          </div>
+          <span class="page-title">Campus Phone &amp; Extension Database</span>
+        </div>
+      </div>
+
+      <!-- Live Pacific Clock & Theme Toggle -->
+      <div class="header-actions">
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span class="status-label">Gilroy Campus:</span>
+          <strong id="live-pacific-clock" class="live-clock">--:-- -- PT</strong>
+        </div>
+        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light / Dark Mode" aria-label="Toggle Color Theme">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Directory Container -->
+  <main class="main-wrapper">
+    
+    <!-- Search & Filter Controls -->
+    <section class="dir-controls-section" aria-label="Staff Directory Search and Filters">
+      <div class="dir-controls-container">
+        
+        <!-- Live Search Bar -->
+        <div class="dir-search-wrap">
+          <div class="dir-search-input-box">
+            <i class="fas fa-search dir-search-icon"></i>
+            <input 
+              type="text" 
+              id="dir-search-input" 
+              class="dir-search-input" 
+              placeholder="Search by name, department, or extension (e.g. 4727, Gladys, Security, Hollister, MESA)..." 
+              aria-label="Search staff directory"
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <button id="dir-search-clear" class="dir-search-clear" title="Clear search" aria-label="Clear search">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Chips & Results Count -->
+        <div class="dir-filter-bar">
+          <div class="dir-chips-group" id="dir-category-tabs" role="tablist">
+            <button class="dir-chip active" data-category="all" role="tab" aria-selected="true">
+              <i class="fas fa-border-all"></i> All Directory
+            </button>
+            <button class="dir-chip" data-category="core" role="tab" aria-selected="false">
+              <i class="fas fa-star"></i> Core Services
+            </button>
+            <button class="dir-chip" data-category="programs" role="tab" aria-selected="false">
+              <i class="fas fa-graduation-cap"></i> Programs &amp; Centers
+            </button>
+            <button class="dir-chip" data-category="support" role="tab" aria-selected="false">
+              <i class="fas fa-hand-holding-heart"></i> Health, Admin &amp; Support
+            </button>
+            <button class="dir-chip" data-category="site" role="tab" aria-selected="false">
+              <i class="fas fa-shield-alt"></i> Security &amp; Hollister
+            </button>
+          </div>
+
+          <div class="dir-stats-counter" id="dir-stats-counter">
+            Showing <strong>38</strong> staff contacts across <strong>21</strong> departments
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Compact Dialing Format Hint Bar -->
+    <section class="dir-format-bar-section" aria-label="Dialing Format">
+      <div class="dir-container">
+        <div class="phone-format-pill-bar">
+          <div class="format-pill-left">
+            <span class="format-pill-icon"><i class="fas fa-phone-volume"></i></span>
+            <span class="format-pill-text">Cell Phone / Outside Line Dialing:</span>
+          </div>
+          <div class="format-pill-number">
+            <strong>(408) 848-4800</strong>
+            <span class="format-ext-pill">XXXX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Directory Content Grid Section -->
+    <section class="dir-results-section" aria-label="Department Phone Directory Results">
+      <div class="dir-container">
+
+        <!-- Dynamic Department Cards Grid rendered by directory.js -->
+        <div class="dir-cards-grid" id="dir-cards-grid">
+          <!-- Populated dynamically by directory.js -->
+        </div>
+
+        <!-- No Matching Results State -->
+        <div class="no-results-state" id="dir-no-results" style="display: none;">
+          <div class="no-results-icon-box">
+            <i class="fas fa-phone-slash"></i>
+          </div>
+          <h3>No matching staff or extensions found</h3>
+          <p id="no-results-query-msg">Try searching with a different name, department title, or 4-digit extension.</p>
+          <button class="btn-reset-search" id="btn-dir-reset">Clear Search &amp; Show All</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Bottom Search Dock (Slides up smoothly when scrolled past top search) -->
+  <aside class="floating-search-dock" id="floating-search-dock" aria-label="Floating Search Navigation Dock">
+    <div class="search-dock-inner">
+      <div class="dock-search-input-wrap">
+        <i class="fas fa-search dock-search-icon"></i>
+        <input 
+          type="text" 
+          id="dock-search-input" 
+          class="dock-search-input" 
+          placeholder="Search staff, dept, or ext..." 
+          aria-label="Floating search input"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button id="dock-search-clear" class="dock-search-clear" title="Clear search" aria-label="Clear search">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <button class="dock-action-btn dock-btn-top" id="dock-btn-top" title="Back to top of directory" aria-label="Scroll back to top">
+        <i class="fas fa-arrow-up"></i>
+        <span class="dock-top-text">Top</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Clean Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <strong>Gavilan College Student Services &amp; Staff Directory</strong>
+        <span>Gilroy Campus: 5055 Santa Teresa Blvd, Gilroy, CA 95020</span>
+        <div class="footer-nav-links">
+          <a href="index.html" class="footer-sub-link"><i class="fas fa-clock"></i> Operating Hours Directory</a>
+          <span class="footer-dot">•</span>
+          <span class="footer-sub-link active"><i class="fas fa-address-book"></i> Staff Phone Directory</span>
+        </div>
+      </div>
+      <div class="footer-right">
+        <span>Updated for <strong>Fall 2026 Academic Term</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Popup -->
+  <div class="toast-popup" id="toast-popup" role="status" aria-live="polite">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-text">Extension copied to clipboard!</span>
+  </div>
+
+  <!-- Vanilla JavaScript -->
+  <script src="directory.js"></script>
+</body>
+</html>
