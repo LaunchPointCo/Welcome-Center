@@ -636,4 +636,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial Render & Scroll Check
   renderDirectory();
   handleDockScroll();
+
+  // Register Service Worker for PWA / offline support
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
 });

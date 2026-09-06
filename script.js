@@ -641,4 +641,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 350);
     }
   }
+
+  // Register Service Worker for PWA / offline support
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
 });

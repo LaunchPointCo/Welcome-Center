@@ -1,11 +1,18 @@
-const CACHE_NAME = 'gav-hours-v1';
+const CACHE_NAME = 'gav-hours-v2';
 const ASSETS = [
   './',
   './index.html',
+  './directory.html',
   './styles.css',
+  './script.js',
+  './directory.js',
   './app.js',
   './data.js',
   './manifest.json',
+  './favicon.png',
+  './apple-touch-icon.png',
+  './icon-192.png',
+  './icon-512.png',
   './icon-192.svg',
   './icon-512.svg'
 ];
