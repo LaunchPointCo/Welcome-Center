@@ -361,8 +361,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const rows = activePanel.querySelectorAll('.schedule-row');
 
       let hoursText = `Gavilan College - ${deptName} (Fall 2026 Hours)\n`;
+      const DAY_MAP = {
+        'Mon': 'Monday',
+        'Tue': 'Tuesday',
+        'Wed': 'Wednesday',
+        'Thu': 'Thursday',
+        'Fri': 'Friday',
+        'Sat–Sun': 'Saturday & Sunday',
+        'Sat-Sun': 'Saturday & Sunday'
+      };
+
       rows.forEach(r => {
-        const day = r.querySelector('.day-full-name')?.textContent?.trim() || '';
+        const rawDay = r.querySelector('.day-badge')?.textContent?.trim() || r.querySelector('.day-full-name')?.textContent?.trim() || '';
+        const day = DAY_MAP[rawDay] || rawDay || 'Day';
         const splitItems = r.querySelectorAll('.split-slot-row');
         if (splitItems.length > 0) {
           const times = Array.from(splitItems).map(item => {
