@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const now = new Date();
     const formatter = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/Los_Angeles',
-      weekday: 'short',
       hour: 'numeric',
       minute: '2-digit',
       hour12: true
@@ -374,7 +373,9 @@ document.addEventListener('DOMContentLoaded', () => {
           hoursText += `• ${day}: ${times}\n`;
         } else {
           const time = r.querySelector('.time-slot')?.textContent?.trim() || '';
-          hoursText += `• ${day}: ${time}\n`;
+          const badge = r.querySelector('.badge-tag')?.textContent?.trim() || '';
+          const formatted = (time === '—' || !time) ? badge : (badge ? `${time} [${badge}]` : time);
+          hoursText += `• ${day}: ${formatted}\n`;
         }
       });
 
