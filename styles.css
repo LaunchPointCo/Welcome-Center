@@ -323,7 +323,7 @@ body::after {
 
 /* Live Clock Capsule */
 .status-indicator {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   background: var(--bg-surface);
@@ -333,8 +333,13 @@ body::after {
   font-size: 0.78rem;
   color: var(--text-secondary);
   box-shadow: var(--shadow-sm);
-  white-space: nowrap;
+  white-space: nowrap !important;
   flex-shrink: 0;
+  line-height: 1;
+}
+
+.status-indicator * {
+  white-space: nowrap !important;
 }
 
 .pulse-dot {
@@ -344,6 +349,7 @@ body::after {
   background: var(--status-open);
   box-shadow: 0 0 8px var(--status-open-glow);
   animation: livePulse 2s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes livePulse {
@@ -352,10 +358,18 @@ body::after {
   100% { transform: scale(0.95); opacity: 0.8; }
 }
 
+.status-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap !important;
+}
+
 .live-clock {
   color: var(--text-main);
   font-family: var(--font-mono);
   font-weight: 600;
+  white-space: nowrap !important;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Theme Switcher Button */
@@ -774,21 +788,22 @@ body::after {
 .schedule-row-left {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
   flex-shrink: 0;
 }
 
 .day-badge {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--text-muted);
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  padding: 3px 9px;
+  padding: 3px 8px;
   border-radius: var(--radius-xs);
-  min-width: 48px;
+  min-width: 44px;
   text-align: center;
   transition: var(--transition);
+  flex-shrink: 0;
 }
 
 .day-full-name {
@@ -796,6 +811,7 @@ body::after {
   font-weight: 600;
   color: var(--text-main);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .schedule-row-right {
@@ -804,6 +820,7 @@ body::after {
   justify-content: flex-end;
   gap: 0.75rem;
   text-align: right;
+  flex-shrink: 0;
 }
 
 .split-times-col {
@@ -819,14 +836,16 @@ body::after {
   justify-content: flex-end;
   gap: 0.65rem;
   line-height: 1.25;
+  white-space: nowrap;
 }
 
 .time-slot {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--text-main);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
+  white-space: nowrap !important;
 }
 
 .time-slot.sub-time {
@@ -858,10 +877,13 @@ body::after {
   font-size: 0.72rem;
   font-weight: 600;
   line-height: 1;
-  padding: 3px 8px;
+  padding: 3px 6px;
   border-radius: var(--radius-full);
-  white-space: nowrap;
+  white-space: nowrap !important;
   letter-spacing: 0.02em;
+  width: 68px;
+  min-width: 68px;
+  text-align: center;
   flex-shrink: 0;
 }
 
@@ -1394,35 +1416,43 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.45rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
   }
 
   .status-indicator {
-    padding: 0.32rem 0.65rem;
-    font-size: 0.74rem;
-    gap: 0.4rem;
-    white-space: nowrap;
-    flex-shrink: 0;
+    padding: 0.32rem 0.65rem !important;
+    font-size: 0.76rem !important;
+    gap: 0.38rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
   }
 
   .status-indicator .status-label {
-    display: none; /* Hide "Gilroy Campus:" on mobile so it stays on 1 clean line */
+    display: none !important; /* Hide "Gilroy Campus:" on mobile so it stays strictly on 1 clean line */
+  }
+
+  .status-indicator .live-clock {
+    white-space: nowrap !important;
+    font-size: 0.76rem !important;
   }
 
   .header-link-btn {
-    padding: 0.32rem 0.65rem;
-    font-size: 0.75rem;
-    gap: 0.35rem;
-    white-space: nowrap;
-    flex-shrink: 0;
+    padding: 0.32rem 0.65rem !important;
+    font-size: 0.75rem !important;
+    gap: 0.35rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
   }
 
   .theme-toggle-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
-    flex-shrink: 0;
+    margin-left: auto !important; /* Positions theme toggle cleanly at the far right with no middle gap */
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.8rem !important;
+    flex-shrink: 0 !important;
   }
 
   .filter-row {
@@ -1441,7 +1471,7 @@ body {
   }
 
   .service-card {
-    padding: 1.15rem;
+    padding: 1.1rem;
     scroll-margin-top: 130px;
   }
 
@@ -1449,16 +1479,70 @@ body {
     font-size: 1.15rem;
   }
 
+  .schedule-list-wrap {
+    border-radius: var(--radius-sm);
+  }
+
   .schedule-row {
-    padding: 0.65rem 0.75rem;
+    padding: 0.62rem 0.7rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .schedule-row.friday-split-row {
+    padding: 0.72rem 0.7rem !important;
+  }
+
+  .schedule-row-left {
+    gap: 0.45rem !important;
+    flex-shrink: 0 !important;
+    min-width: 0 !important;
+  }
+
+  .day-badge {
+    min-width: 34px !important;
+    padding: 2px 4px !important;
+    font-size: 0.66rem !important;
   }
 
   .day-full-name {
-    font-size: 0.82rem;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+  }
+
+  .schedule-row-right {
+    gap: 0.4rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .split-times-col {
+    gap: 0.32rem !important;
+  }
+
+  .split-slot-row {
+    gap: 0.4rem !important;
+    white-space: nowrap !important;
   }
 
   .time-slot {
-    font-size: 0.82rem;
+    font-size: 0.76rem !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .time-slot.sub-time {
+    font-size: 0.74rem !important;
+  }
+
+  .badge-tag {
+    font-size: 0.65rem !important;
+    padding: 2px 0 !important;
+    width: 62px !important;
+    min-width: 62px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
   }
 
   .footer-container {
