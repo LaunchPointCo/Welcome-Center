@@ -318,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
         timeZone: 'America/Los_Angeles',
         hour: 'numeric',
         minute: '2-digit',
-        second: '2-digit',
         hour12: true
       };
       const ptString = new Intl.DateTimeFormat('en-US', options).format(now);
